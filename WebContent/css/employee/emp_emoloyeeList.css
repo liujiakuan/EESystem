@@ -1,0 +1,95 @@
+@CHARSET "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+.backgroundNav{
+    background-color: #39A952;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    float: left;
+}
+.navName{
+    font-weight: bolder;
+    font-size: 24px;
+    line-height: 50px;
+    color: black;
+}
+.backgroundNav ul li{
+    position: relative;
+    top: -20px;
+    font-weight: bolder;
+    color: black;
+    list-style: none;
+    float: right;
+    margin-right: 30px;
+}
+.backgroundNav ul li a{
+    color: black;
+    border-bottom:1px solid black;
+}
+.changeLine{
+    margin-top: 50px;
+}
+
+.marginTop{
+    border: 1px solid #39A952;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 80px;
+}
+.leftItem{
+    
+}
+/*Ա����¼���������*/
+
+/*�м�Ա����ϸ��Ϣ*/
+.empListImg{
+    list-style: none;
+    /*text-align: center;*/
+    margin-top: 40px;
+}
+.empInfo{
+    list-style: none;
+}
+.empListImg li div img{
+    height: 170px;
+    width: 145px;
+    border-radius: 6px;
+}
+.empListImg li div ul{
+    text-align: left;
+}
+
+.apartmentChoose{
+    margin-top: 40px;
+}
+.apartmentChoose span{
+    font-weight: bolder;
+    color: #39A952;
+}
+.apartmentChoose ul{
+    list-style: none;
+    font-weight: bold;
+    border: 1px solid #39A952;
+    border-radius: 10px;
+}
+.apartmentChoose ul li{
+    text-align: center;
+    margin-top: 10px;
+}
+.apartmentChoose ul li a{
+    color: black;
+}
+
+.changePage,.changePage a{
+    color: #39A952;
+}
+.pageNumber{
+    border-color: #39A952;
+}
+.submit{
+    background-color: #39A952;
+    border: solid 1px #39A952;
+}

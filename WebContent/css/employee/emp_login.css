@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+.backgroundNav{
+    background-color: #39A952;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+.navName{
+    font-weight: bolder;
+    font-size: 24px;
+    line-height: 50px;
+    color: black;
+}
+.changeLine{
+    margin-top: 50px;/*防止头部导航条挡住一部分信息*/
+}
+.employeeLoginForm{
+    margin-top: 100px;
+    margin-left: 100px;
+}
+.loginButton{
+    background-color: #39A952;
+    border: solid 1px #39A952;
+    border-radius: 5px;
+    color: black;
+    font-weight: bolder;
+    width: 60px;
+}
+.newEmployeeAdd{
+    margin-left: 100px;
+    font-weight: bold;
+    color: #39A952;
+    position: relative;
+    top: 3px;
+}

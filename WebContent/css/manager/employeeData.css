@@ -1,0 +1,94 @@
+@CHARSET "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+.backgroundNav{
+    background-color: #39A952;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    float: left;
+}
+.navName{
+    font-weight: bolder;
+    font-size: 24px;
+    line-height: 50px;
+    color: black;
+}
+.backgroundNav ul li{
+    position: relative;
+    top: -20px;
+    font-weight: bolder;
+    color: black;
+    list-style: none;
+    float: right;
+    margin-right: 30px;
+}
+.backgroundNav ul li a{
+    color: black;
+    border-bottom:1px solid black;
+}
+.changeLine{
+    margin-top: 50px;/*��ֹͷ����������סһ������Ϣ*/
+}
+
+/*Ա����¼���������*/
+.marginTop{
+    border: 1px solid #39A952;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 80px;
+}
+.leftItem{
+    /*��߲������������ѡ��*/
+}
+/*Ա����¼���������*/
+
+/*�м���ݿ��ӻ�չʾ����*/
+.dataShow{
+    margin-top: 20px;
+}
+.totalCount{
+    border: 1px solid #39A952;
+    height: 270px;
+    border-radius: 5px;
+    text-align: center;
+}
+.totalCount div{
+    margin-top: 85px;
+}
+.totalCount span{
+    font-size: 24px;
+    font-weight: bold;
+}
+.totalCount p{
+    font-size: 36px;
+    font-weight: bolder;
+}
+.manWoman{
+    height: 280px;
+}
+.manWomanAge{
+    height: 280px;
+}
+.numberData{
+    height: 280px;
+}
+.numberDataUl{
+	list-style: none;
+	float: left;
+	margin-left: 40px;
+}
+.numberDataUl li{
+	margin-top: 10px;
+	font-weight: bold;
+}
+.numberDataUl li span{
+	font-size: 20px;
+	font-weight: bolder;
+	color: #39A952;
+}
+.manWomanQualification{
+    height: 280px;
+}

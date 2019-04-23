@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ees.mapper.EmployeeMapper" >
+	<!--员工以及员工紧急联系人ResultMap映射配置-->
+	<resultMap type="ees.po.EmployeePo" id="Employee_ResultMap">
+		<id column="es_employee_id" property="es_employee_id" />
+		<result column="es_employee_name" property="es_employee_name" />
+		<result column="es_employee_age" property="es_employee_age" />
+		<result column="es_employee_sex" property="es_employee_sex" />
+		<result column="es_employee_img" property="es_employee_img" />
+		<result column="es_employee_idcard" property="es_employee_idcard" />
+		<result column="es_employee_marriage" property="es_employee_marriage" />
+		<result column="es_employee_qualification" property="es_employee_qualification" />
+		<result column="es_employee_school" property="es_employee_school" />
+		<result column="es_employee_major" property="es_employee_major" />
+		<result column="es_employee_department" property="es_employee_department" />
+		<result column="es_employee_post" property="es_employee_post" />
+		<result column="es_employee_entry" property="es_employee_entry" />
+		<result column="es_employee_call" property="es_employee_call" />
+		<result column="es_employee_mail" property="es_employee_mail" />
+		<result column="es_employee_bankcard" property="es_employee_bankcard" />
+		<result column="es_employee_labourcard" property="es_employee_labourcard" />
+		<result column="es_employee_pafcard" property="es_employee_pafcard" />
+		<result column="es_employee_pod" property="es_employee_pod" />
+		<result column="es_employee_domicile" property="es_employee_domicile" />
+		<result column="es_employee_motto" property="es_employee_motto" />
+		<result column="es_employee_aim" property="es_employee_aim" />
+		<result column="es_employee_qq" property="es_employee_qq" />
+		<result column="es_employee_wechat" property="es_employee_wechat" />
+		<result column="es_employee_hobby" property="es_employee_hobby" />
+		<result column="es_employee_count" property="es_employee_count" />
+		<result column="es_employee_password" property="es_employee_password" />
+		<collection property="contactsPoList" ofType="ees.po.ContactsPo">
+			<id column="es_employee_contacts_id" property="es_employee_contacts_id" />
+			<result column="es_employee_contacts_name" property="es_employee_contacts_name" />
+			<result column="es_employee_contacts_relation" property="es_employee_contacts_relation" />
+			<result column="es_employee_contacts_call" property="es_employee_contacts_call" />
+			<result column="es_employee_id" property="es_employee_id" />
+		</collection>
+		<collection property="feedbackPoList" ofType="ees.po.FeedbackPo">
+			<id column="es_employee_feedback_id" property="es_employee_feedback_id" />
+			<result column="es_employee_feedback_content" property="es_employee_feedback_content" />
+			<result column="es_employee_feedback_date" property="es_employee_feedback_date" />
+			<result column="es_employee_feedback_state" property="es_employee_feedback_state" />
+			<result column="es_employee_id" property="es_employee_id" />
+		</collection>
+	</resultMap>
+	
+	<!--员工添加自己信息-->
+ 	<insert id="employeeAddEmployee" parameterType="EmployeePo" useGeneratedKeys="true" keyProperty="es_employee_id">
+ 		insert into es_employee(
+ 		es_employee_name,
+ 		es_employee_age,
+ 		es_employee_sex,
+ 		es_employee_img,
+ 		es_employee_idcard,
+ 		es_employee_marriage,
+ 		es_employee_qualification,
+ 		es_employee_school,
+ 		es_employee_major,
+ 		es_employee_department,
+ 		es_employee_post,
+ 		es_employee_entry,
+ 		es_employee_call,
+ 		es_employee_mail,
+ 		es_employee_bankcard,
+ 		es_employee_labourcard,
+ 		es_employee_pafcard,
+ 		es_employee_pod,
+ 		es_employee_domicile,
+ 		es_employee_motto,
+ 		es_employee_aim,
+ 		es_employee_qq,
+ 		es_employee_wechat,
+ 		es_employee_hobby,
+ 		es_employee_count,
+ 		es_employee_password
+ 		) values(
+ 		#{es_employee_name},
+ 		#{es_employee_age},
+ 		#{es_employee_sex},
+ 		#{es_employee_img},
+ 		#{es_employee_idcard},
+ 		#{es_employee_marriage},
+ 		#{es_employee_qualification},
+ 		#{es_employee_school},
+ 		#{es_employee_major},
+ 		#{es_employee_department},
+ 		#{es_employee_post},
+ 		#{es_employee_entry},
+ 		#{es_employee_call},
+ 		#{es_employee_mail},
+ 		#{es_employee_bankcard},
+ 		#{es_employee_labourcard},
+ 		#{es_employee_pafcard},
+ 		#{es_employee_pod},
+ 		#{es_employee_domicile},
+ 		#{es_employee_motto},
+ 		#{es_employee_aim},
+ 		#{es_employee_qq},
+ 		#{es_employee_wechat},
+ 		#{es_employee_hobby},
+ 		#{es_employee_count},
+ 		#{es_employee_password}
+ 		)
+ 		<selectKey keyProperty="es_employee_id" resultType="int">   
+              select LAST_INSERT_ID()   
+        </selectKey>  
+ 	</insert>
+ 	<!--这里可以获得刚插入表格的id，为后面Contact的插入提供了es_employee_id字段-->  
+    <select id="employeeSelectLastId" parameterType="String" resultType="int">  
+         select es_employee_id from es_employee where es_employee_idcard = #{es_employee_idcard}
+    </select> 
+ 	<!--管理员添加员工紧急联系人-->
+ 	<insert id="employeeAddContacts" parameterType="java.util.ArrayList">
+ 		insert into es_employee_contacts(
+ 		es_employee_contacts_name,
+ 		es_employee_contacts_relation,
+ 		es_employee_contacts_call,
+ 		es_employee_id
+ 		) values
+ 		<foreach collection="list" item="item" index="index" separator="," >  
+        (#{item.es_employee_contacts_name},
+ 		#{item.es_employee_contacts_relation},
+ 		#{item.es_employee_contacts_call},
+ 		#{item.es_employee_id})
+    	</foreach> 
+ 	</insert>
+ 	<!--员工登录,通过制定账号和密码查询指定员工-->
+ 	<select id="employeeLogin" parameterType="String" resultType="EmployeePo">
+ 		select * from es_employee where es_employee_count=#{es_employee_count} and es_employee_password=#{es_employee_password}
+ 	</select>
+ 	<!--员工登录,通过制定账号和密码查询指定员工-->
+ 	<select id="employeeIndex" parameterType="String" resultMap="Employee_ResultMap">
+ 		select es_employee.*,es_employee_contacts.* 
+ 		from es_employee left join es_employee_contacts 
+ 		on 
+ 		es_employee.es_employee_id=es_employee_contacts.es_employee_id 
+ 		where 
+ 		es_employee.es_employee_count=#{es_employee_count} 
+ 		and 
+ 		es_employee.es_employee_password=#{es_employee_password}
+ 	</select>
+ 	 	<!--员工登录,通过制定账号和密码查询指定员工-->
+ 	<select id="employeeByCount" parameterType="String" resultMap="Employee_ResultMap">
+ 		select es_employee.*,es_employee_contacts.* 
+ 		from es_employee left join es_employee_contacts 
+ 		on 
+ 		es_employee.es_employee_id=es_employee_contacts.es_employee_id 
+ 		where 
+ 		es_employee.es_employee_count=#{es_employee_count} 
+ 	</select>
+ 	<!--更具员工账号获取员工id-->
+ 	<select id="employeeId" parameterType="String" resultType="int">  
+         select es_employee_id from es_employee where es_employee_count = #{es_employee_count}
+    </select>
+    <!--更具员工账号获取员工姓名-->
+ 	<select id="employeeName" parameterType="String" resultType="String">  
+         select es_employee_name from es_employee where es_employee_count = #{es_employee_count}
+    </select>
+    <!--员工信息修改反馈表插入信息-->
+    <insert id="insertEs_employee_feedback" parameterType="FeedbackPo">
+    	 insert into es_employee_feedback(
+    	 es_employee_feedback_content,
+    	 es_employee_feedback_date,
+    	 es_employee_feedback_state,
+    	 es_employee_id
+    	 ) values(
+    	 #{es_employee_feedback_content},
+    	 #{es_employee_feedback_date},
+    	 #{es_employee_feedback_state},
+    	 #{es_employee_id}
+    	 )
+    </insert>
+    <!--根据员工id，查询指定员工的信息修改反馈列表，反馈信息因该是未处理的信息-->
+    <select id="empSelectFeedback" parameterType="int" resultType="FeedbackPo">
+    	select * from es_employee_feedback where 
+    	es_employee_feedback_state=0 
+    	and 
+    	es_employee_id=#{es_employee_id}
+    </select>
+    <!-- 得到数据表里面总的数据条数 -->
+ 	<select id="empGetEmployeeCount" resultType="int">
+ 		select count(*) from es_employee
+ 	</select>
+ 	
+ 	<!--得到指定区间的员工-->
+ 	<select id="empGetEmployeeList" resultType="EmployeePo">
+ 		select * from es_employee limit #{pageNow},#{pageSize}
+ 	</select>
+    
+    
+</mapper>
