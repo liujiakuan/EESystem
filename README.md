@@ -1,2 +1,2 @@
 # EESystem
-企业员工个人信息管理系统
+College practice program->Enterprise staff personal information management system。The purpose is to manage the personal information of enterprise employees。
